@@ -1,26 +1,57 @@
-@import "tailwindcss";
+:root{
+  /* TRLCO-ish palette — tweak as you like */
+  --brand-start: #F2693F;  /* warm orange */
+  --brand-mid:   #E04E41;  /* coral */
+  --brand-end:   #2F9A9A;  /* teal */
+  --bg: #0e0f12;
+  --surface: #14161a;
+  --text: #e9eef3;
+  --muted: #8c96a5;
+  --border: #242833;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-gradient: linear-gradient(135deg,var(--brand-start),var(--brand-mid) 45%,var(--brand-end));
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,body{ height:100%; background: var(--bg); color: var(--text);}
+*{ box-sizing: border-box; }
+a{ color: inherit; text-decoration: none; }
+input,button{
+  font: inherit;
+}
+.card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 10px 14px; border-radius: 12px; border:1px solid transparent;
+  cursor:pointer; transition: transform .04s ease, opacity .2s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn-primary{
+  background-image: var(--brand-gradient);
+  color: white;
+}
+.input{
+  width: 100%;
+  padding: 10px 12px;
+  background: #0c0d10;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+}
+.helper{ color: var(--muted); font-size: 12px; }
+.center-page{
+  min-height: 100dvh; display:grid; place-items:center; padding: 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+.min-h-dvh { min-height: 100dvh; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.input.input-error { border-color: #7a1f28 !important; outline: none; }
+.error-text { color: #ffb3b8; font-size: 12px; margin-top: 6px; }
+.alert {
+  background: #2a1215; border: 1px solid #5b1a22; color: #ffb3b8;
+  border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; font-size: 13px;
 }

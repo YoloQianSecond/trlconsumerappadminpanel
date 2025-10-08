@@ -1,0 +1,64 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(180deg, #E76F51 0%, #2A9D8F 100%);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--trl-divider, rgba(255,255,255,0.2));
+  user-select: none;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  /* keep SVG crisp on dark/gradient bg */
+  filter: none;
+}
+
+.logo-text {
+  color: white;
+}
+
+.logo-sub {
+  font-size: 14px;
+  vertical-align: super;
+  color: #F8F9FA;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.menu-item {
+  padding: 0.9rem 1.5rem;
+  background: none;
+  border: none;
+  color: #F8F9FA;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+}

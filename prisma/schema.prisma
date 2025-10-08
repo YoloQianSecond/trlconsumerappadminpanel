@@ -1,0 +1,44 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+/* --- Matches your current mock models --- */
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  partners  Partner[]
+  imageUrl  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Partner {
+  id         String    @id @default(cuid())
+  name       String
+  link       String
+  featured   Boolean   @default(false)
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  imageUrl   String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([categoryId])
+}
+
+model Announcement {
+  id            String   @id @default(cuid())
+  title         String
+  description   String
+  link          String
+  datePublished DateTime
+  imageUrl      String?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
